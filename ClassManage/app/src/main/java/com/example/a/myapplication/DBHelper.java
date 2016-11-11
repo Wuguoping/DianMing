@@ -10,9 +10,6 @@ import android.content.Context;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    //version number to upgrade database version
-    //each time if you Add, Edit table, you need to change the
-    //version number.
     private static final int DATABASE_VERSION = 4;
 
     // Database Name
@@ -24,7 +21,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //All necessary tables you like to create will create here
 
         String CREATE_TABLE_STUDENT = "CREATE TABLE " + Student.TABLE  + "("
                 + Student.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -42,23 +38,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_TABLE_STUDENT);
 
-        /*String CREATE_TABLE_ATTENDANCE="CREATE TABLE"+"Attendace"+"("
-                +"idd"+"INTEGER PRIMARY KEY ,"
-                +"weeks"+"TEXT,"
-                +"condition"+"TEXT)";
-              //  +"FOREIGN KEY(id) REFERENCES Student(id))";
-
-        db.execSQL(CREATE_TABLE_ATTENDANCE);/*/
-
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older table if existed, all data will be gone!!!
         db.execSQL("DROP TABLE IF EXISTS " + Student.TABLE);
-
-        // Create tables again
         onCreate(db);
 
     }

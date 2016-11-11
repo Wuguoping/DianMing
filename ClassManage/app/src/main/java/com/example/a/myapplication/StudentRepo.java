@@ -46,7 +46,6 @@ public class StudentRepo {
     public void delete(int student_Id) {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        // It's a good practice to use parameter ?, instead of concatenate string
         db.delete(Student.TABLE, Student.KEY_ID + "= ?", new String[] { String.valueOf(student_Id) });
         db.close(); // Closing database connection
     }
@@ -69,7 +68,6 @@ public class StudentRepo {
         values.put(Student.KEY_week8,student.week8);
 
 
-        // It's a good practice to use parameter ?, instead of concatenate string
         db.update(Student.TABLE, values, Student.KEY_ID + "= ?", new String[] { String.valueOf(student.student_ID) });
         db.close(); // Closing database connection
     }
@@ -131,7 +129,7 @@ public class StudentRepo {
                 Student.KEY_week8+
                 " FROM " + Student.TABLE
                 + " WHERE " +
-                Student.KEY_ID + "=?";// It's a good practice to use parameter ?, instead of concatenate string
+                Student.KEY_ID + "=?";
 
         int iCount =0;
         Student student = new Student();
